@@ -1,0 +1,76 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Туристична агенція | Твій теплий відпочинок</title>
+    
+    <!-- Підключення зовнішнього стилю -->
+<link rel="stylesheet" href="css/style.css">
+    
+
+    <!-- Додатковий захист: якщо CSS не завантажиться, ці стилі врятують вигляд -->
+    <style>
+        .logo-container {
+            width: 100px !important;
+            height: 100px !important;
+            margin: 0 auto 15px auto !important;
+        }
+        .logo-svg {
+            width: 70px !important;
+            height: 70px !important;
+        }
+    </style>
+</head>
+<body>
+
+<header style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+    <div class="logo-container" style="background: white; width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid #F1C40F; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+        <!-- Додано width та height прямо в SVG -->
+        <svg class="logo-svg" width="70" height="70" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="fill: #D35400;">
+            <path d="M12,7L12,7C10.5,7,9.17,7.75,8.41,9H15.59C14.83,7.75,13.5,7,12,7z M2,12c0,4.41,3.59,8,8,8h4c4.41,0,8-3.59,8-8s-3.59-8-8-8h-4C5.59,4,2,7.59,2,12z M12,2c5.52,0,10,4.48,10,10s-4.48,10-10,10S2,17.52,2,12S6.48,2,12,2z M6,12c0,0.55,0.45,1,1,1h10c0.55,0,1-0.45,1-1s-0.45-1-1-1H7C6.45,11,6,11.45,6,12z"/>
+            <path d="M12,4c-4.42,0-8,3.58-8,8c0,1.44,0.39,2.79,1.05,3.95l1.45-1.45C6.18,13.77,6,12.91,6,12c0-3.31,2.69-6,6-6s6,2.69,6,6c0,0.91-0.18,1.77-0.5,2.5l1.45,1.45C19.61,14.79,20,13.44,20,12C20,7.58,16.42,4,12,4z"/>
+        </svg>
+    </div>
+    <h1>Сонячні мандри</h1>
+    <p>Подорожі, що зігрівають серце</p>
+</header>
+
+<nav style="text-align: center; padding: 15px;">
+    <a href="destinations.html" style="margin: 0 10px; text-decoration: none; font-weight: bold;">Напрямки</a>
+    <a href="order.html" style="margin: 0 10px; text-decoration: none; font-weight: bold;">Замовити тур</a>
+    <a href="about.html" style="margin: 0 10px; text-decoration: none; font-weight: bold;">Про нас</a>
+    <a href="reviewc.html" style="margin: 0 10px; text-decoration: none; font-weight: bold;">Відгуки</a> 
+    <a href="contacts.html" style="margin: 0 10px; text-decoration: none; font-weight: bold;">Контакти</a>
+</nav>
+
+<section class="container" id="tours" style="max-width: 1100px; margin: 0 auto; padding: 20px;">
+    <h2 style="text-align: center;">Гарячі пропозиції</h2>
+    <div class="offers-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <div class="card" style="max-width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: white;">
+            <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=400&q=80" 
+                 alt="Марокко" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+            <h3>🏜️ Марокко</h3>
+            <p>Загадкові пустелі та пряні аромати ринків Марракеша.</p>
+            <p><strong>Від 22 000 грн</strong></p>
+        </div>
+        <div class="card" style="max-width: 300px; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background: white;">
+            <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=400&q=80" 
+                 alt="Занзібар" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+            <h3>🥥 Занзібар</h3>
+            <p>Білосніжний пісок та неймовірні заходи сонця над океаном.</p>
+            <p><strong>Від 55 000 грн</strong></p>
+        </div>
+    </div>
+</section>
+
+<footer style="text-align: center; padding: 30px; margin-top: 20px;">
+    <p>📍 м. Тернопіль, вул. Сонячна, 10</p>
+    <p>📞 +38 (067) 368-45-12</p>
+    <p>&copy; 2026 Туристична агенція "Сонячні мандри"</p>
+</footer>
+
+</body>
+</html>

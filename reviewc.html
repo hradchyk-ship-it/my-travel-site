@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Відгуки | Сонячні мандри</title>
+    <style> 
+
+.add-review-form {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    border: 2px dashed var(--secondary-color);
+}
+
+.add-review-form h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.rating-select {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rating-select select {
+    width: auto;
+    margin: 0;
+}
+
+
+
+
+
+
+
+
+        :root {
+            --primary-color: #D35400; --secondary-color: #E67E22; 
+            --accent-color: #F1C40F; --bg-warm: #FFF5E1; --text-dark: #4A2700;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: var(--bg-warm); color: var(--text-dark); }
+        
+        header { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 40px 20px; text-align: center; }
+        
+        nav { background: white; padding: 15px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        nav a { margin: 0 20px; text-decoration: none; color: var(--primary-color); font-weight: bold; }
+
+        .container { width: 85%; max-width: 1100px; margin: auto; padding: 40px 0; }
+        
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        
+        .review-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-bottom: 4px solid var(--accent-color); }
+        
+        .stars { color: var(--accent-color); font-size: 1.2rem; }
+        .author { font-weight: bold; margin-top: 10px; display: block; color: var(--primary-color); }
+        
+        footer { background: var(--text-dark); color: white; text-align: center; padding: 20px; margin-top: 50px; }
+        .back-link { display: inline-block; margin-top: 20px; color: var(--primary-color); text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Що кажуть наші туристи</h1>
+</header>
+
+<nav>
+
+<a href="index.html">Головна</a>
+    <a href="index.html#tours">Напрямки</a>
+    <a href="index.html#order">Замовити тур</a>
+</nav>
+
+<div class="container">
+<section class="add-review-form">
+    <h2>Поділіться своїми враженнями</h2>
+    <form id="feedbackForm">
+        <label for="userName">Ваше ім'я</label>
+        <input type="text" id="userName" placeholder="Як вас звати?" required>
+
+        <div class="rating-select">
+            <label for="userRating">Ваша оцінка:</label>
+            <select id="userRating">
+                <option value="★★★★★">5 зірок ★★★★★</option>
+                <option value="★★★★☆">4 зірки ★★★★☆</option>
+                <option value="★★★☆☆">3 зірки ★★★☆☆</option>
+                <option value="★★☆☆☆">2 зірки ★★☆☆☆</option>
+                <option value="★☆☆☆☆">1 зірка ★☆☆☆☆</option>
+            </select>
+        </div>
+
+        <label for="userMessage">Ваш відгук</label>
+        <textarea id="userMessage" rows="4" placeholder="Напишіть кілька слів про вашу подорож..." required></textarea>
+
+        <button type="submit" class="submit-btn">Опублікувати відгук</button>
+    </form>
+</section>
+    <div class="review-grid">
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Відпочинок у Марокко перевершив усі очікування! Готель був чудовий, а організація від Сонячних мандрів — на висоті."</p>
+            <span class="author">— Марія, м. Тернопіль</span>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>"Дякую за неймовірний Занзібар. Все було чітко: від перельоту до трансферу. Обов'язково повернуся до вас ще!"</p>
+            <span class="author">— Олег, м. Львів</span>
+        </div>
+
+        <div class="review-card">
+            <div class="stars">★★★★☆</div>
+            <p>"Гарний підбір готелю в Туреччині. Хотілося б трохи більше екскурсій у програмі, але загалом — супер."</p>
+            <span class="author">— Анна, м. Київ</span>
+        </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="index.html" class="back-link">← Повернутися на головну</a>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2026 Сонячні мандри</p>
+</footer>
+<script>
+document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Зупиняємо перезавантаження сторінки
+
+    // Отримуємо дані з полів
+    const name = document.getElementById('userName').value;
+    const rating = document.getElementById('userRating').value;
+    const message = document.getElementById('userMessage').value;
+
+    // Створюємо нову картку відгуку
+    const newReview = document.createElement('div');
+    newReview.className = 'review-card';
+    newReview.style.borderBottom = '4px solid #2ECC71'; // Колір для нового відгуку
+
+    newReview.innerHTML = `
+        <div class="stars">${rating}</div>
+        <p>"${message}"</p>
+        <span class="author">— ${name}, (щойно додано)</span>
+    `;
+
+    // Додаємо відгук на початок списку
+    const grid = document.querySelector('.review-grid');
+    grid.insertBefore(newReview, grid.firstChild);
+
+    // Очищуємо форму
+    this.reset();
+    alert('Дякуємо за ваш відгук! Він з’явиться після модерації.');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Напрямки | Сонячні мандри - Ваші сонячні подорожі</title>
+    <style>
+        :root {
+            --primary-color: #D35400; /* Теплий помаранчевий */
+            --secondary-color: #E67E22; /* Яскравіший помаранчевий */
+            --accent-color: #F1C40F;  /* Сонячний жовтий */
+            --bg-warm: #FFF5E1;       /* Кремовий фон */
+            --text-dark: #4A2700;     /* Темно-коричневий текст */
+            --card-bg: #FFFFFF;        /* Білий для карток */
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-warm);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Щоб футер завжди був внизу */
+        }
+
+        /* --- ГАРМОНІЙНИЙ HEADER (ідентичний головній) --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* --- НАВІГАЦІЯ (спрощена, з поверненням) --- */
+        nav {
+            background: var(--card-bg);
+            padding: 12px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 0 15px;
+            font-size: 1.1em;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- ОСНОВНИЙ КОНТЕЙНЕР --- */
+        .container {
+            width: 90%;
+            max-width: 1200px; /* Трохи ширше для сітки карток */
+            margin: auto;
+            padding: 50px 0;
+            flex: 1; /* Займає доступний простір */
+        }
+
+        /* --- ЗАГОЛОВКИ СЕКЦІЙ --- */
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            opacity: 0.8;
+            margin-bottom: 50px;
+            color: var(--text-dark);
+        }
+
+        /* --- СІТКА НАПРЯМКІВ --- */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Адаптивна сітка */
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* --- КАРТКА НАПРЯМКУ --- */
+        .destination-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden; /* Щоб зображення не виходило за межі */
+            box-shadow: 0 4px 15px rgba(211, 84, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 4px solid var(--accent-color); /* Акцентна лінія внизу */
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(211, 84, 0, 0.2);
+        }
+
+        /* Зображення в картці */
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Зберігає пропорції, заповнюючи простір */
+            transition: transform 0.5s ease;
+        }
+
+        .destination-card:hover img {
+            transform: scale(1.05); /* Легке збільшення при наведенні */
+        }
+
+        /* Текстовий блок картки */
+        .card-content {
+            padding: 25px;
+            flex-grow: 1; /* Рівномірний розподіл простору */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h3 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-content p {
+            font-size: 1em;
+            margin: 0 0 20px 0;
+            opacity: 0.9;
+            flex-grow: 1;
+        }
+
+        /* Блок ціни та кнопки */
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #EEE;
+        }
+
+        .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .price-label {
+            font-size: 0.8em;
+            font-weight: normal;
+            display: block;
+            color: #777;
+        }
+
+        .btn-card {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white !important;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-card:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.03);
+        }
+
+        /* --- ЗАКЛЮЧНИЙ БЛОК (Заклик до дії) --- */
+        .cta-destinations {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(230, 126, 34, 0.1), rgba(241, 196, 15, 0.1));
+            border-radius: 12px;
+            border: 2px dashed var(--accent-color);
+        }
+
+        .cta-destinations h3 {
+            color: var(--secondary-color);
+            font-size: 1.8em;
+            margin-top: 0;
+        }
+
+        .btn-large {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white !important;
+            text-decoration: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 20px;
+            transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.2);
+        }
+
+        .btn-large:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(211, 84, 0, 0.3);
+        }
+
+        /* --- ФУТЕР (ідентичний головній) --- */
+        footer {
+            background: var(--text-dark);
+            color: var(--bg-warm);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        footer p { margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Сонячні мандри</h1>
+</header>
+
+<nav>
+    <a href="index.html">&larr; Головна</a>
+    <a href="about.html">Про нас</a>
+    <a href="order.html">Замовити тур</a>
+</nav>
+
+<section class="container">
+    <h2>🏝️ Наші сонячні напрямки</h2>
+    <p class="section-subtitle">Оберіть свій ідеальний куточок тепла та релаксу</p>
+    
+    <div class="destinations-grid">
+        
+        <!-- НАПРЯМОК 1: МАРОККО (вже є) -->
+        <div class="destination-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=600&q=80" alt="🏜️ Марокко">
+            </div>
+            <div class="card-content">
+                <h3>🏜️ Марокко</h3>
+                <p>Пориньте у казку тисячі й однієї нічі. Загадкові пустелі Сахари, колоритні ринки Марракеша та прохолода Атлантичного океану.</p>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="price-label">від</span>
+                        22 000 грн
+                    </div>
+                    <a href="order.html" class="btn-card">Замовити</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- НАПРЯМОК 2: ЗАНЗІБАР (вже є) -->
+        <div class="destination-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&w=600&q=80" alt="🥥 Занзібар">
+            </div>
+            <div class="card-content">
+                <h3>🥥 Занзібар</h3>
+                <p>Райський острів біля берегів Африки. Білосніжний пісок, бірюзові води Індійського океану та неймовірні заходи сонця під звуки "Акуна Матата".</p>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="price-label">від</span>
+                        55 000 грн
+                    </div>
+                    <a href="order.html" class="btn-card">Замовити</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- НАПРЯМОК 3: ЄГИПЕТ (новий) -->
+        <div class="destination-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1539768942893-daf53e448371?auto=format&fit=crop&w=600&q=80" alt="🐫 Єгипет">
+            </div>
+            <div class="card-content">
+                <h3>🐫 Єгипет</h3>
+                <p>Класика сонячного відпочинку. Фантастичний підводний світ Червоного моря, стародавні піраміди та комфорт готелів "все включено".</p>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="price-label">від</span>
+                        15 000 грн
+                    </div>
+                    <a href="order.html" class="btn-card">Замовити</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- НАПРЯМОК 4: ТАЇЛАНД (новий) -->
+        <div class="destination-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1528181304800-2f1402c6c3bc?auto=format&fit=crop&w=600&q=80" alt="🐘 Таїланд">
+            </div>
+            <div class="card-content">
+                <h3>🐘 Таїланд</h3>
+                <p>Країна посмішок та екзотики. Дивовижні храми, тропічні острови, смачна вулична кухня та незабутній колорит Південно-Східної Азії.</p>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="price-label">від</span>
+                        48 000 грн
+                    </div>
+                    <a href="order.html" class="btn-card">Замовити</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- НАПРЯМОК 5: ТУРЕЧЧИНА (новий) -->
+        <div class="destination-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=600&q=80" alt="🕌 Туреччина">
+            </div>
+            <div class="card-content">
+                <h3>🕌 Туреччина</h3>
+                <p>Поєднання східної гостинності та європейського сервісу. Чотири моря, унікальна Каппадокія та багата історична спадщина.</p>
+                <div class="card-footer">
+                    <div class="price">
+                        <span class="price-label">від</span>
+                        18 000 грн
+                    </div>
+                    <a href="order.html" class="btn-card">Замовити</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ЗАКЛИК ДО ДІЇ -->
+    <div class="cta-destinations">
+        <h3>Не знайшли напрямок своєї мрії?</h3>
+        <p>Наші експерти з радістю розроблять для вас індивідуальний маршрут у будь-яку теплу точку планети!</p>
+        <a href="order.html" class="btn-large">Замовити консультацію</a>
+    </div>
+
+</section>
+
+<footer>
+    <p>📍 м. Тернопіль, вул. Сонячна, 10</p>
+    <p>📞 +38 (067) 368-45-12</p>
+    <p>&copy; 2026 Туристична агенція "Сонячні мандри"</p>
+</footer>
+
+</body>
+</html>

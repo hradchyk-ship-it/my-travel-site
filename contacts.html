@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | Сонячні мандри</title>
+    <style>
+        :root {
+            --primary-color: #D35400; 
+            --secondary-color: #E67E22; 
+            --accent-color: #F1C40F;  
+            --bg-warm: #FFF5E1;       
+            --text-dark: #4A2700;     
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-warm);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info, .map-container {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(211, 84, 0, 0.1);
+        }
+
+        .info-item {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item .icon {
+            font-size: 24px;
+            margin-right: 15px;
+            background: var(--bg-warm);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        h2 { color: var(--primary-color); }
+
+        footer {
+            background: var(--text-dark);
+            color: var(--bg-warm);
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Стиль для карти */
+        iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>КОНТАКТИ</h1>
+    <p>Ми завжди на зв'язку, щоб допомогти вам з відпочинком</p>
+</header>
+
+<nav>
+    <a href="index.html">Головна</a>
+    <a href="index.html#tours">Напрямки</a>
+    <a href="#about">Про нас</a>
+</nav>
+
+<section class="container">
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h2>Наші координати</h2>
+            
+            <div class="info-item">
+                <span class="icon">📍</span>
+                <div>
+                    <strong>Адреса:</strong><br>
+                    м. Тернопіль, вул. Сонячна, 10
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="icon">📞</span>
+                <div>
+                    <strong>Телефони:</strong><br>
+                    +38 (067) 368-45-12<br>
+                    +38 (050) 123-45-67
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="icon">✉️</span>
+                <div>
+                    <strong>Email:</strong><br>
+                    info@soniachni-mandry.com.ua
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="icon">🕒</span>
+                <div>
+                    <strong>Графік роботи:</strong><br>
+                    Пн-Пт: 09:00 - 19:00<br>
+                    Сб: 10:00 - 15:00
+                </div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <h2>Ми на карті</h2>
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d2588.6474147775586!2d25.5905!3d49.5535!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4730313f87b8d4bb%3A0x6b498f321943f60b!2z0KLQtdGA0L3QvtC_0ZbQu9GMLCDQotC10YDQvdC-0L_RltC70YzRgdGM0LrQsCDQvtCx0LvQsNGB0YLRjCwgNDYwMDE!5e0!3m2!1suk!2sua!4v1700000000000" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Туристична агенція "Сонячні мандри"</p>
+</footer>
+
+</body>
+</html>
